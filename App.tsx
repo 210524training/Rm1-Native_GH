@@ -1,23 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import LoginPage from './src/components/pages/LoginPage';
+import Navbar from './src/components/nav';
+import AppRoutes from './src/router/AppRoutes';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import {MyStack} from './src/components/pages/Navi';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <LoginPage />
-    </View>
+    <NavigationContainer>
+      <MyStack/>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
+  nav: {
+    flexDirection: "row",
+    height: 100,
+    padding: 20
+  }
 });
