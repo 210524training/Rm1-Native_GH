@@ -1,14 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Navbar from './src/components/nav';
-import AppRoutes from './src/router/AppRoutes';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import {MyStack} from './src/components/pages/Navi';
 import Navigation from './src/components/navigation';
 import useColorScheme from './src/components/navigation/hooks/useColorScheme';
 import useCachedResources from './src/components/navigation/hooks/useCachedResources';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, StatusBar } from 'react-native';
+import LoginPage from './src/components/pages/LoginPage';
+import MainPage from './src/MainPage';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -20,7 +17,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-
+    // flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: StatusBar.currentHeight
   },
   nav: {
     flexDirection: "row",

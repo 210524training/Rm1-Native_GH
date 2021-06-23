@@ -1,18 +1,27 @@
 import * as React from 'react';
-import { StyleSheet, Image } from 'react-native';
-import SvgUri from 'react-native-svg-uri'; // SVG Package
-import Iphone from '../assets/images/iphone.png';
-import Scooter from '../assets/images/scooter.png';
-import StoreFront from '../assets/images/storefront.png';
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { StyleSheet, Image, Text, View, Dimensions, ScrollView } from 'react-native';
+import Iphone from '../assets/iphone.png';
+import Scooter from '../assets/scooter.png';
+import StoreFront from '../assets/storefront.png';
+// import { create, PREDEF_RES } from 'react-native-pixel-perfect'
+const { create, PREDEF_RES } = require('react-native-pixel-perfect');
+const perfectSize = create(PREDEF_RES.iphoneX.px)
+
+var width = Dimensions.get('window').width; //full width
+var height = Dimensions.get('window').height; //full height
+
 
 export default function TabOneScreen() {
+
+  
   
 
+
   return (
+    
     <View style={styles.container}>
     <View style={styles.banner}>
+    {console.log(globalThis)}
       <View>
         <Text >GrubDash</Text>
       </View>
@@ -22,24 +31,24 @@ export default function TabOneScreen() {
       {/* { user && <p>Greetings {user.username}</p>} */}
     </View>
     <View > 
-      <View >
+      <View style={styles.imagerow}>
         <View >
           <View >
-            <Image source={Scooter} style={styles.img}/>
+            <Image  source={Scooter} style={styles.img}/>
              
-            <Text>Become a Dasher</Text>
+            <Text style={styles.textview}>Become a Dasher</Text>
           </View>
         </View>
         <View >
           <View >
-            <Image source={ Iphone }/>
-            <Text>Try the app</Text>
+            <Image source={ Iphone } style={styles.img} />
+            <Text style={styles.textview}>Try the app</Text>
           </View>
         </View>       
         <View >
           <View >
-            <Image source={ StoreFront } />
-            <Text>View Restaurants</Text>
+            <Image source={ StoreFront } style={styles.img} />
+            <Text style={styles.textview}>View Restaurants</Text>
           </View>
         </View>
       </View>
@@ -55,13 +64,19 @@ export default function TabOneScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  imagerow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
   banner: {
-    width: 100,
+    width: width,
     backgroundColor: 'red',
+    padding: 40,
   },
   title: {
     fontSize: 20,
@@ -73,7 +88,12 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   img: {
-    maxHeight: 50,
-    maxWidth: 50
+    height: perfectSize(350),
+    width: perfectSize(350),
+    margin: 45,
   },
+  textview: {
+    textAlign: 'center',
+  }
 });
+
