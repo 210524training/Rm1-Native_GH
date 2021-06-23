@@ -6,12 +6,15 @@ import AppRoutes from './src/router/AppRoutes';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import {MyStack} from './src/components/pages/Navi';
+import Navigation from './src/components/navigation';
+import useColorScheme from './src/components/navigation/hooks/useColorScheme';
+import useCachedResources from './src/components/navigation/hooks/useCachedResources';
 
 export default function App() {
+  const isLoadingComplete = useCachedResources();
+  const colorScheme = useColorScheme();
   return (
-    <NavigationContainer>
-      <MyStack/>
-    </NavigationContainer>
+    <Navigation colorScheme={colorScheme} />
   );
 }
 
