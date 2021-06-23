@@ -1,15 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
-import { sendLogin } from './grubdash-backend/grubdash.api';
-import User from './models/user';
-import router from 'react-router-native'
-// import { useHistory } from 'react-router-dom';
-// import { useAppDispatch } from '../../../hooks';
-// import { loginAsync } from '../../../slices/user.slice';
+import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View } from 'react-native';
+import { sendLogin } from '../../grubdash-backend/grubdash.api';
+import User from '../../models/user';
 
 const LoginPage: React.FC<unknown> = (props) => {
-
-  console.log(router)
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -22,9 +16,9 @@ const LoginPage: React.FC<unknown> = (props) => {
     setPassword(password);
   };
 
-  const handleFormSubmit = async (username: string, password: string): Promise<User> => {
+  const handleFormSubmit = async (ev: NativeSyntheticEvent<NativeTouchEvent>): Promise<User> => {
     return await sendLogin(username, password);
-
+    //TODO: redirect to homepage
   }
 
   return (
